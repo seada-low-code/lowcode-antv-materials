@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react",
+    "declaration": false,
+    "outDir": "./lib",
+    "removeComments": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "preserveConstEnums": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": ["es5", "dom", "es6"],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"]
+}
