@@ -91,20 +91,7 @@ export const dataSourceMeta: IPublicTypeFieldConfig = {
       },
       setter: [
         {
-          componentName: 'SelectSetter',
-          props: {
-            options: [
-              {
-                title: 'GET',
-                value: 'get',
-              },
-              {
-                title: 'POST',
-                value: 'post',
-              },
-            ],
-          },
-          initialValue: 'get',
+          componentName: 'StringSetter',
         },
       ],
       condition: (target) => target.getProps().getPropValue('dataSource.type') === 'api',
