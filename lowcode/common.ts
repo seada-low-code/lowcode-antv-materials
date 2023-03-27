@@ -8,7 +8,7 @@ export const dataSourceMeta: IPublicTypeFieldConfig = {
       'zh-CN': '数据源',
     },
   },
-  display: 'block',
+  display: 'accordion',
   type: 'group',
   items: [
     {
@@ -116,7 +116,7 @@ export const containerMeta: IPublicTypeFieldConfig = {
   title: {
     label: '图表容器',
   },
-  display: 'block',
+  display: 'accordion',
   type: 'group',
   items: [
     {

@@ -24,7 +24,7 @@ const LineMeta: IPublicTypeComponentMetadata = {
         title: {
           label: '数据映射',
         },
-        display: 'block',
+        display: 'accordion',
         type: 'group',
         items: [
           {
@@ -65,7 +65,7 @@ const LineMeta: IPublicTypeComponentMetadata = {
         title: {
           label: '图形样式',
         },
-        display: 'block',
+        display: 'accordion',
         type: 'group',
         items: [
           {

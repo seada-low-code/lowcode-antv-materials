@@ -24,7 +24,7 @@ const ColumnMeta: IPublicTypeComponentMetadata = {
         title: {
           label: '数据映射',
         },
-        display: 'block',
+        display: 'accordion',
         type: 'group',
         items: [
           {
@@ -91,7 +91,7 @@ const ColumnMeta: IPublicTypeComponentMetadata = {
         title: {
           label: '图表容器',
         },
-        display: 'block',
+        display: 'accordion',
         type: 'group',
         items: [
           {
