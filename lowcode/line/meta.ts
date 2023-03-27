@@ -69,13 +69,29 @@ const LineMeta: IPublicTypeComponentMetadata = {
         type: 'group',
         items: [
           {
-            name: 'smooth',
+            name: 'displayType',
             title: {
-              label: 'smooth',
-              tip: '曲线是否平滑',
+              label: '展示形式',
             },
             setter: {
-              componentName: 'BoolSetter',
+              componentName: 'RadioGroupSetter',
+              props: {
+                options: [
+                  {
+                    label: '折线',
+                    value: 'line',
+                  },
+                  {
+                    label: '曲线',
+                    value: 'curve',
+                  },
+                  {
+                    label: '阶梯',
+                    value: 'step',
+                  },
+                ],
+              },
+              initialValue: 'line',
             },
           },
           {
@@ -105,8 +121,29 @@ const LineMeta: IPublicTypeComponentMetadata = {
                     value: 'vhv',
                   },
                 ],
-                defaultValue: 'hv',
               },
+              initialValue: 'hv',
+            },
+            condition: (target) => target.getProps().getPropValue('displayType') === 'step',
+          },
+          {
+            name: 'connectNulls',
+            title: {
+              label: 'connectNulls',
+              tip: '对于折线图中缺失的值，是否连接空数据为一条线',
+            },
+            setter: {
+              componentName: 'BoolSetter',
+            },
+          },
+          {
+            name: 'isStack',
+            title: {
+              label: 'isStack',
+              tip: '存在seriesField分组字段，是否让折线堆叠累加起来',
+            },
+            setter: {
+              componentName: 'BoolSetter',
             },
           },
         ],

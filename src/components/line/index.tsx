@@ -5,15 +5,26 @@ import { IDataSource } from '@/types';
 
 export interface LineProps {
   dataSource: IDataSource;
-  xField: string;
-  yField: string;
-  padding?: LineConfig['padding'];
+  displayType: 'line' | 'curve' | 'step';
+  xField: LineConfig['xField'];
+  yField: LineConfig['yField'];
 }
 
-const Line: React.FC<LineProps> = ({ xField, yField, dataSource, ...rest }) => {
+const Line: React.FC<LineProps> = ({ xField, yField, dataSource, displayType, ...rest }) => {
   const data = useData(dataSource);
 
-  return <AntVLine data={data} xField={xField} yField={yField} {...rest} />;
+  const { stepType } = (rest as LineConfig) || {};
+
+  return (
+    <AntVLine
+      data={data}
+      xField={xField}
+      yField={yField}
+      {...rest}
+      smooth={displayType === 'curve'}
+      stepType={displayType === 'step' ? stepType || 'hv' : null}
+    />
+  );
 };
 
 Line.displayName = 'Line';
