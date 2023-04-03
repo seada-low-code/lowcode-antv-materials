@@ -25,9 +25,9 @@
     "test": "test"
   },
   "keywords": [
-    "Fusion"
+    "Seada"
   ],
-  "author": "seada",
+  "author": "Seada",
   "license": "MIT",
   "husky": {
     "hooks": {
