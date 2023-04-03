@@ -2,7 +2,6 @@
   "name": "@seada/antv-materials",
   "version": "0.1.0",
   "description": "lowcode-antv-materials",
-  "private": true,
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
