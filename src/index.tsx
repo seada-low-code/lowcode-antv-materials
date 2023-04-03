@@ -10,7 +10,7 @@ export { default as Pie } from './components/pie';
 export type { BarProps } from './components/bar';
 export { default as Bar } from './components/bar';
 
-export { default as RGLContainer } from './components/rgl-container';
+export { default as MagneticContainer } from './components/magnetic-container';
 
 const bizCssPrefix = 'bizpack';
 

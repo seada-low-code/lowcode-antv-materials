@@ -8,5 +8,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn'],
     'react/no-unused-prop-types': 0,
+    'react/self-closing-comp': 0,
   },
 };

@@ -1,17 +1,17 @@
 import { IPublicTypeComponentMetadata, IPublicTypeSnippet } from '@alilc/lowcode-types';
 
-const PieMeta: IPublicTypeComponentMetadata = {
-  componentName: 'RGLContainer',
-  title: 'RGLContainer',
+const MagneticContainerMeta: IPublicTypeComponentMetadata = {
+  componentName: 'MagneticContainer',
+  title: 'MagneticContainer',
   docUrl: '',
   screenshot: '',
   devMode: 'proCode',
-  group: 'AntV',
+  group: '磁贴容器',
   category: '',
   npm: {
     package: '@seada/antv-materials',
     version: '0.1.0',
-    exportName: 'RGLContainer',
+    exportName: 'MagneticContainer',
     main: '',
     destructuring: true,
     subName: '',
@@ -27,16 +27,16 @@ const PieMeta: IPublicTypeComponentMetadata = {
 
 const snippets: IPublicTypeSnippet[] = [
   {
-    title: 'RGLContainer',
+    title: 'MagneticContainer',
     screenshot: '',
     schema: {
-      componentName: 'RGLContainer',
+      componentName: 'MagneticContainer',
       props: {},
     },
   },
 ];
 
 export default {
-  ...PieMeta,
+  ...MagneticContainerMeta,
   snippets,
 };
