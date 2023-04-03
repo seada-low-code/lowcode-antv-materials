@@ -11,7 +11,7 @@ export * from '/Users/haloworld/Project/lowcode-antv-materials/src/index.tsx';
 const coveredComponents = {};
 
 const library = 'BizComps';
-const execCompile = !!false;
+const execCompile = !!true;
 
 if (!execCompile) {
   window[library] = Object.assign({__esModule: true}, componentInstances || {}, coveredComponents || {});
