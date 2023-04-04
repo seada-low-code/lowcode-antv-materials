@@ -8,9 +8,19 @@ export interface LineProps {
   displayType: 'line' | 'curve' | 'step';
   xField: LineConfig['xField'];
   yField: LineConfig['yField'];
+  showLegend?: boolean;
+  legend?: LineConfig['legend'];
 }
 
-const Line: React.FC<LineProps> = ({ xField, yField, dataSource, displayType, ...rest }) => {
+const Line: React.FC<LineProps> = ({
+  xField,
+  yField,
+  dataSource,
+  displayType,
+  showLegend,
+  legend,
+  ...rest
+}) => {
   const data = useData(dataSource);
 
   const { stepType } = (rest as LineConfig) || {};
@@ -20,6 +30,7 @@ const Line: React.FC<LineProps> = ({ xField, yField, dataSource, displayType, ..
       data={data}
       xField={xField}
       yField={yField}
+      legend={showLegend ? legend : false}
       {...rest}
       smooth={displayType === 'curve'}
       stepType={displayType === 'step' ? stepType || 'hv' : null}

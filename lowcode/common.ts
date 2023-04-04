@@ -120,6 +120,17 @@ export const containerMeta: IPublicTypeFieldConfig = {
   type: 'group',
   items: [
     {
+      name: 'autoFit',
+      title: {
+        label: 'autoFit',
+        tip: '自适应容器宽高',
+      },
+      setter: {
+        componentName: 'BoolSetter',
+        initialValue: true,
+      },
+    },
+    {
       name: 'width',
       title: {
         label: 'width',
@@ -129,6 +140,7 @@ export const containerMeta: IPublicTypeFieldConfig = {
         componentName: 'NumberSetter',
         initialValue: 400,
       },
+      condition: (target) => target.getProps().getPropValue('autoFit') === false,
     },
     {
       name: 'height',
@@ -140,17 +152,7 @@ export const containerMeta: IPublicTypeFieldConfig = {
         componentName: 'NumberSetter',
         initialValue: 400,
       },
-    },
-    {
-      name: 'autoFit',
-      title: {
-        label: 'autoFit',
-        tip: '自适应容器宽高',
-      },
-      setter: {
-        componentName: 'BoolSetter',
-        initialValue: true,
-      },
+      condition: (target) => target.getProps().getPropValue('autoFit') === false,
     },
     {
       name: 'padding',
