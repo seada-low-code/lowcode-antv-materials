@@ -7,12 +7,35 @@ export interface ColumnProps {
   dataSource: IDataSource;
   xField: ColumnConfig['xField'];
   yField: ColumnConfig['yField'];
+  showLegend?: boolean;
+  legend?: ColumnConfig['legend'];
+  showLabel?: boolean;
+  label?: ColumnConfig['label'];
 }
 
-const Column: React.FC<ColumnProps> = ({ dataSource, xField, yField, ...rest }) => {
+const Column: React.FC<ColumnProps> = ({
+  dataSource,
+  xField,
+  yField,
+  showLegend,
+  legend,
+  showLabel,
+  label,
+  ...rest
+}) => {
+  console.log(showLabel, label);
   const data = useData(dataSource);
 
-  return <AntVColumn data={data} xField={xField} yField={yField} {...rest} />;
+  return (
+    <AntVColumn
+      data={data}
+      xField={xField}
+      yField={yField}
+      legend={showLegend ? legend : false}
+      label={showLabel ? label || {} : undefined}
+      {...rest}
+    />
+  );
 };
 
 Column.displayName = 'Column';

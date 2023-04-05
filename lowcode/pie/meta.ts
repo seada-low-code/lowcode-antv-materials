@@ -1,5 +1,5 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
-import { containerMeta, dataSourceMeta } from '../common';
+import { containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 import { snippets } from './snippets';
 
 const PieMeta: IPublicTypeComponentMetadata = {
@@ -45,6 +45,8 @@ const PieMeta: IPublicTypeComponentMetadata = {
         ],
       },
       { ...containerMeta },
+      { ...labelMeta },
+      { ...legendMeta },
       {
         title: {
           label: '图形样式',
@@ -101,69 +103,6 @@ const PieMeta: IPublicTypeComponentMetadata = {
             setter: {
               componentName: 'NumberSetter',
             },
-          },
-        ],
-      },
-      {
-        title: {
-          label: '图表组件',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [
-          {
-            title: {
-              label: '文本标签',
-            },
-            display: 'popup',
-            type: 'group',
-            items: [
-              {
-                name: 'label.type',
-                title: {
-                  label: 'type',
-                },
-                setter: {
-                  componentName: 'RadioGroupSetter',
-                  props: {
-                    options: [
-                      {
-                        label: 'inner',
-                        value: 'inner',
-                      },
-                      {
-                        label: 'outer',
-                        value: 'outer',
-                      },
-                      {
-                        label: 'spider',
-                        value: 'spider',
-                      },
-                    ],
-                    defaultValue: 'inner',
-                  },
-                },
-              },
-              {
-                name: 'label.content',
-                title: {
-                  label: 'content',
-                },
-                setter: {
-                  componentName: 'StringSetter',
-                },
-              },
-              {
-                name: 'label.rotate',
-                title: {
-                  label: 'rotate',
-                  tip: '文本旋转角度',
-                },
-                setter: {
-                  componentName: 'NumberSetter',
-                },
-              },
-            ],
           },
         ],
       },

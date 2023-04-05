@@ -8,12 +8,34 @@ export interface BarProps {
   xField: BarConfig['xField'];
   yField: BarConfig['yField'];
   seriesField?: BarConfig['seriesField'];
+  showLegend?: boolean;
+  legend?: BarConfig['legend'];
+  showLabel?: boolean;
+  label?: BarConfig['label'];
 }
 
-const Bar: React.FC<BarProps> = ({ xField, yField, dataSource, ...rest }) => {
+const Bar: React.FC<BarProps> = ({
+  xField,
+  yField,
+  dataSource,
+  showLegend,
+  legend,
+  showLabel,
+  label,
+  ...rest
+}) => {
   const data = useData(dataSource);
 
-  return <AntVBar data={data} xField={xField} yField={yField} {...rest} />;
+  return (
+    <AntVBar
+      data={data}
+      xField={xField}
+      yField={yField}
+      legend={showLegend ? legend : false}
+      label={showLabel ? label || {} : undefined}
+      {...rest}
+    />
+  );
 };
 
 Bar.displayName = 'Bar';

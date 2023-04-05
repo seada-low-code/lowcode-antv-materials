@@ -1,6 +1,6 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
 import { snippets } from './snippets';
-import { dataSourceMeta } from '../common';
+import { containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 
 const ColumnMeta: IPublicTypeComponentMetadata = {
   componentName: 'Column',
@@ -88,63 +88,12 @@ const ColumnMeta: IPublicTypeComponentMetadata = {
           },
         ],
       },
+      { ...containerMeta },
       {
-        title: {
-          label: '图表容器',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [
-          {
-            name: 'width',
-            title: {
-              label: 'width',
-              tip: '图表宽度',
-            },
-            setter: {
-              componentName: 'NumberSetter',
-              initialValue: 400,
-            },
-          },
-          {
-            name: 'height',
-            title: {
-              label: 'height',
-              tip: '图表高度',
-            },
-            setter: {
-              componentName: 'NumberSetter',
-              initialValue: 400,
-            },
-          },
-          {
-            name: 'autoFit',
-            title: {
-              label: 'autoFit',
-              tip: '自适应容器宽高',
-            },
-            setter: {
-              componentName: 'BoolSetter',
-              initialValue: true,
-            },
-          },
-          {
-            name: 'padding',
-            title: {
-              label: 'padding',
-              tip: '间距',
-            },
-            setter: [
-              {
-                componentName: 'StringSetter',
-              },
-              {
-                componentName: 'NumberSetter',
-              },
-            ],
-            defaultValue: 'auto',
-          },
-        ],
+        ...labelMeta,
+      },
+      {
+        ...legendMeta,
       },
     ],
     supports: {

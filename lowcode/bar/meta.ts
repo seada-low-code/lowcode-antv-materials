@@ -1,5 +1,5 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
-import { containerMeta, dataSourceMeta } from '../common';
+import { containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 import { snippets } from './snippets';
 
 const BarMeta: IPublicTypeComponentMetadata = {
@@ -57,6 +57,12 @@ const BarMeta: IPublicTypeComponentMetadata = {
         ],
       },
       { ...containerMeta },
+      {
+        ...labelMeta,
+      },
+      {
+        ...legendMeta,
+      },
     ],
     supports: { style: true },
     component: {},
