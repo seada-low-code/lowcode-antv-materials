@@ -1,7 +1,8 @@
 import React from 'react';
 import { Column as AntVColumn, ColumnConfig } from '@ant-design/plots';
 import { useData } from '@/hooks/data';
-import { IDataSource } from '@/types';
+import { AxisExtra, IDataSource } from '@/types';
+import { getAxis } from '@/utils';
 
 export interface ColumnProps {
   dataSource: IDataSource;
@@ -11,6 +12,10 @@ export interface ColumnProps {
   legend?: ColumnConfig['legend'];
   showLabel?: boolean;
   label?: ColumnConfig['label'];
+  xAxisExtra?: AxisExtra;
+  yAxisExtra?: AxisExtra;
+  xAxis?: ColumnConfig['xAxis'];
+  yAxis?: ColumnConfig['yAxis'];
 }
 
 const Column: React.FC<ColumnProps> = ({
@@ -21,6 +26,10 @@ const Column: React.FC<ColumnProps> = ({
   legend,
   showLabel,
   label,
+  xAxisExtra,
+  yAxisExtra,
+  xAxis,
+  yAxis,
   ...rest
 }) => {
   const data = useData(dataSource);
@@ -32,6 +41,8 @@ const Column: React.FC<ColumnProps> = ({
       yField={yField}
       legend={showLegend ? legend : false}
       label={showLabel ? label || {} : undefined}
+      xAxis={getAxis(xAxis, xAxisExtra)}
+      yAxis={getAxis(yAxis, yAxisExtra)}
       {...rest}
     />
   );

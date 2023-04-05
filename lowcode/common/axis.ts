@@ -1,25 +1,39 @@
 import { IPublicTypeFieldConfig } from '@alilc/lowcode-types';
 
-export const getAxisMetaData = (axisName: string): IPublicTypeFieldConfig => {
+export const getAxisMetaData = (axis: 'xAxis' | 'yAxis'): IPublicTypeFieldConfig => {
+  const axisName = axis === 'xAxis' ? 'X轴' : 'Y轴';
+  const extraName = `${axis}Extra`;
   return {
     title: {
       label: axisName,
     },
     display: 'accordion',
+    defaultCollapsed: true,
     type: 'group',
     items: [
       {
-        name: `${axisName}.top`,
+        name: `${extraName}.showAxis`,
         title: {
-          label: 'top',
-          tip: '是否渲染在画布顶层',
+          label: `显示${axisName}`,
         },
         setter: {
           componentName: 'BoolSetter',
         },
+        defaultValue: true,
       },
+      // {
+      //   name: `${axis}.top`,
+      //   title: {
+      //     label: 'top',
+      //     tip: '是否渲染在画布顶层',
+      //   },
+      //   setter: {
+      //     componentName: 'BoolSetter',
+      //   },
+      //   condition: (target) => target.getProps().getPropValue(`${extraName}.showAxis`) === true,
+      // },
       {
-        name: `${axisName}.position`,
+        name: `${axis}.position`,
         title: {
           label: 'position',
           tip: '坐标轴的位置',
@@ -47,36 +61,32 @@ export const getAxisMetaData = (axisName: string): IPublicTypeFieldConfig => {
             ],
           },
         },
+        condition: (target) => target.getProps().getPropValue(`${extraName}.showAxis`) === true,
       },
       {
-        name: `${axisName}.min`,
+        name: `${extraName}.showTitle`,
         title: {
-          label: 'min',
-          tip: '坐标轴最小值',
+          label: '标题显示',
         },
         setter: {
-          componentName: 'NumberSetter',
-          props: {
-            min: 0,
-          },
-          initialValue: 0,
+          componentName: 'BoolSetter',
         },
+        defaultValue: false,
+        condition: (target) => target.getProps().getPropValue(`${extraName}.showAxis`) === true,
       },
       {
-        name: `${axisName}.max`,
+        name: `${axis}.title.text`,
         title: {
-          label: 'max',
-          tip: '坐标轴最大值',
+          label: '标题文本',
         },
         setter: {
-          componentName: 'NumberSetter',
-          props: {
-            min: 0,
-          },
+          componentName: 'StringSetter',
         },
+        defaultValue: axisName,
+        condition: (target) => target.getProps().getPropValue(`${extraName}.showTitle`) === true,
       },
       {
-        name: `${axisName}.tickCount`,
+        name: `${axis}.tickCount`,
         title: {
           label: 'tickCount',
           tip: '期望的坐标轴刻度数量',
@@ -87,7 +97,17 @@ export const getAxisMetaData = (axisName: string): IPublicTypeFieldConfig => {
             min: 0,
           },
         },
+        condition: (target) => target.getProps().getPropValue(`${extraName}.showAxis`) === true,
       },
     ],
   };
+};
+
+export const axisMeta: IPublicTypeFieldConfig = {
+  title: {
+    label: '坐标',
+  },
+  display: 'accordion',
+  type: 'group',
+  items: [{ ...getAxisMetaData('xAxis') }, { ...getAxisMetaData('yAxis') }],
 };

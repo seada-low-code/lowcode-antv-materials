@@ -1,24 +1,31 @@
 import React from 'react';
 import { Line as AntVLine, LineConfig } from '@ant-design/plots';
 import { useData } from '@/hooks/data';
-import { IDataSource } from '@/types';
+import { AxisExtra, IDataSource } from '@/types';
+import { getAxis } from '@/utils';
 
 export interface LineProps {
   dataSource: IDataSource;
   displayType: 'line' | 'curve' | 'step';
   xField: LineConfig['xField'];
   yField: LineConfig['yField'];
+  stepType?: LineConfig['stepType'];
   showLegend?: boolean;
   legend?: LineConfig['legend'];
   showLabel?: boolean;
   label?: LineConfig['label'];
   showPoint?: boolean;
   point?: LineConfig['point'];
+  xAxisExtra?: AxisExtra;
+  yAxisExtra?: AxisExtra;
+  xAxis?: LineConfig['xAxis'];
+  yAxis?: LineConfig['yAxis'];
 }
 
 const Line: React.FC<LineProps> = ({
   xField,
   yField,
+  stepType,
   dataSource,
   displayType,
   showLegend,
@@ -27,11 +34,13 @@ const Line: React.FC<LineProps> = ({
   label,
   showPoint,
   point,
+  xAxisExtra,
+  yAxisExtra,
+  xAxis,
+  yAxis,
   ...rest
 }) => {
   const data = useData(dataSource);
-
-  const { stepType } = (rest as LineConfig) || {};
 
   return (
     <AntVLine
@@ -41,6 +50,8 @@ const Line: React.FC<LineProps> = ({
       legend={showLegend ? legend : false}
       label={showLabel ? label || {} : undefined}
       point={showPoint ? point : undefined}
+      xAxis={getAxis(xAxis, xAxisExtra)}
+      yAxis={getAxis(yAxis, yAxisExtra)}
       {...rest}
       smooth={displayType === 'curve'}
       stepType={displayType === 'step' ? stepType || 'hv' : null}

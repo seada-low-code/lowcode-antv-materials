@@ -1,6 +1,13 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
 import { snippets } from './snippets';
-import { containerMeta, dataSourceMeta, getAxisMetaData, labelMeta, legendMeta } from '../common';
+import {
+  axisMeta,
+  containerMeta,
+  dataSourceMeta,
+  getAxisMetaData,
+  labelMeta,
+  legendMeta,
+} from '../common';
 
 const LineMeta: IPublicTypeComponentMetadata = {
   componentName: 'Line',
@@ -150,14 +157,7 @@ const LineMeta: IPublicTypeComponentMetadata = {
         ],
       },
       { ...containerMeta },
-      {
-        title: {
-          label: '坐标',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [{ ...getAxisMetaData('xAxis') }, { ...getAxisMetaData('yAxis') }],
-      },
+      { ...axisMeta },
       { ...labelMeta },
       { ...legendMeta },
       {

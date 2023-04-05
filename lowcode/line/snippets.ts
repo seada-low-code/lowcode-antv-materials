@@ -77,6 +77,7 @@ export const snippets: IPublicTypeSnippet[] = [
         xField: 'year',
         yField: 'value',
         stepType: 'vh',
+        xAxis: false,
       },
     },
   },

@@ -1,6 +1,6 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
 import { snippets } from './snippets';
-import { containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
+import { axisMeta, containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 
 const ColumnMeta: IPublicTypeComponentMetadata = {
   componentName: 'Column',
@@ -89,6 +89,7 @@ const ColumnMeta: IPublicTypeComponentMetadata = {
         ],
       },
       { ...containerMeta },
+      { ...axisMeta },
       {
         ...labelMeta,
       },

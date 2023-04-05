@@ -1,7 +1,8 @@
 import React from 'react';
 import { Bar as AntVBar, BarConfig } from '@ant-design/plots';
 import { useData } from '@/hooks/data';
-import { IDataSource } from '@/types';
+import { AxisExtra, IDataSource } from '@/types';
+import { getAxis } from '@/utils';
 
 export interface BarProps {
   dataSource: IDataSource;
@@ -12,6 +13,10 @@ export interface BarProps {
   legend?: BarConfig['legend'];
   showLabel?: boolean;
   label?: BarConfig['label'];
+  xAxisExtra?: AxisExtra;
+  yAxisExtra?: AxisExtra;
+  xAxis?: BarConfig['xAxis'];
+  yAxis?: BarConfig['yAxis'];
 }
 
 const Bar: React.FC<BarProps> = ({
@@ -22,6 +27,10 @@ const Bar: React.FC<BarProps> = ({
   legend,
   showLabel,
   label,
+  xAxisExtra,
+  yAxisExtra,
+  xAxis,
+  yAxis,
   ...rest
 }) => {
   const data = useData(dataSource);
@@ -33,6 +42,8 @@ const Bar: React.FC<BarProps> = ({
       yField={yField}
       legend={showLegend ? legend : false}
       label={showLabel ? label || {} : undefined}
+      xAxis={getAxis(xAxis, xAxisExtra)}
+      yAxis={getAxis(yAxis, yAxisExtra)}
       {...rest}
     />
   );
