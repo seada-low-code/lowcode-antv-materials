@@ -422,11 +422,14 @@ const LineMeta: IPublicTypeComponentMetadata = {
               },
               initialValue: 'circle',
             },
+            condition: (target) => target.getProps().getPropValue('showPoint') === true,
           },
         ],
       },
     ],
-    supports: {},
+    supports: {
+      style: true,
+    },
     component: {},
   },
 };
