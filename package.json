@@ -1,6 +1,6 @@
 {
   "name": "@seada/antv-materials",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lowcode-antv-materials",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -76,7 +76,7 @@
   },
   "componentConfig": {
     "isComponentLibrary": true,
-    "materialSchema": "https://unpkg.com/@seada/antv-materials@0.1.1/build/lowcode/assets-prod.json"
+    "materialSchema": "https://unpkg.com/@seada/antv-materials@0.1.2/build/lowcode/assets-prod.json"
   },
   "publishConfig": {
     "access": "public"

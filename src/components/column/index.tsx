@@ -23,7 +23,6 @@ const Column: React.FC<ColumnProps> = ({
   label,
   ...rest
 }) => {
-  console.log(showLabel, label);
   const data = useData(dataSource);
 
   return (
