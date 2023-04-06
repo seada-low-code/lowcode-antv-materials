@@ -42,6 +42,8 @@ const Line: React.FC<LineProps> = ({
 }) => {
   const data = useData(dataSource);
 
+  console.log('rest:', rest);
+
   return (
     <div>
       <AntVLine

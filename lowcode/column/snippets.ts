@@ -1,4 +1,5 @@
 import { IPublicTypeSnippet } from '@alilc/lowcode-types';
+import { commonPadding } from '../common';
 
 export const snippets: IPublicTypeSnippet[] = [
   {
@@ -49,6 +50,9 @@ export const snippets: IPublicTypeSnippet[] = [
         },
         xField: 'type',
         yField: 'sales',
+        style: {
+          ...commonPadding,
+        },
       },
     },
   },
@@ -86,6 +90,9 @@ export const snippets: IPublicTypeSnippet[] = [
               type: 'adjust-color',
             },
           ],
+        },
+        style: {
+          ...commonPadding,
         },
       },
     },
@@ -210,6 +217,9 @@ export const snippets: IPublicTypeSnippet[] = [
               type: 'adjust-color',
             },
           ],
+        },
+        style: {
+          ...commonPadding,
         },
       },
     },

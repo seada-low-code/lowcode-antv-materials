@@ -10,8 +10,8 @@ export const containerMeta: IPublicTypeFieldConfig = {
     {
       name: 'autoFit',
       title: {
-        label: 'autoFit',
-        tip: '自适应容器宽高',
+        label: '自适应宽高',
+        tip: '自适应容器宽高|autoFit',
       },
       setter: {
         componentName: 'BoolSetter',
@@ -21,8 +21,8 @@ export const containerMeta: IPublicTypeFieldConfig = {
     {
       name: 'width',
       title: {
-        label: 'width',
-        tip: '图表宽度',
+        label: '图表宽度',
+        tip: '图表宽度|width',
       },
       setter: {
         componentName: 'NumberSetter',
@@ -33,8 +33,8 @@ export const containerMeta: IPublicTypeFieldConfig = {
     {
       name: 'height',
       title: {
-        label: 'height',
-        tip: '图表高度',
+        label: '图表高度',
+        tip: '图表高度|height',
       },
       setter: {
         componentName: 'NumberSetter',
@@ -45,29 +45,26 @@ export const containerMeta: IPublicTypeFieldConfig = {
     {
       name: 'padding',
       title: {
-        label: 'padding',
-        tip: '间距',
+        label: '间距',
+        tip: '间距|padding',
       },
       setter: [
-        {
-          componentName: 'StringSetter',
-        },
         {
           componentName: 'NumberSetter',
         },
       ],
       defaultValue: 'auto',
     },
-    {
-      name: 'appendPadding',
-      title: {
-        label: 'appendPadding',
-        tip: '在padding的基础上，设置额外的padding数值',
-      },
-      setter: {
-        componentName: 'NumberSetter',
-      },
-    },
+    // {
+    //   name: 'appendPadding',
+    //   title: {
+    //     label: 'appendPadding',
+    //     tip: '在padding的基础上，设置额外的padding数值',
+    //   },
+    //   setter: {
+    //     componentName: 'NumberSetter',
+    //   },
+    // },
     {
       name: 'limitInPlot',
       title: {

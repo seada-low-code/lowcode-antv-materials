@@ -1,4 +1,5 @@
 import { IPublicTypeSnippet } from '@alilc/lowcode-types';
+import { commonPadding } from '../common';
 
 export const snippets: IPublicTypeSnippet[] = [
   {
@@ -41,6 +42,9 @@ export const snippets: IPublicTypeSnippet[] = [
         },
         colorField: 'type',
         angleField: 'value',
+        style: {
+          ...commonPadding,
+        },
       },
     },
   },
@@ -114,6 +118,9 @@ export const snippets: IPublicTypeSnippet[] = [
             },
             content: 'AntV\nG2Plot',
           },
+        },
+        style: {
+          ...commonPadding,
         },
       },
     },
