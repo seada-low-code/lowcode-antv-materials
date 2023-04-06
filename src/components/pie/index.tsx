@@ -26,14 +26,16 @@ const Pie: React.FC<PieProps> = ({
   const data = useData(dataSource);
 
   return (
-    <AntVPie
-      data={data}
-      angleField={angleField}
-      colorField={colorField}
-      legend={showLegend ? legend : false}
-      label={showLabel ? label || {} : undefined}
-      {...rest}
-    />
+    <div>
+      <AntVPie
+        data={data}
+        angleField={angleField}
+        colorField={colorField}
+        legend={showLegend ? legend : false}
+        label={showLabel ? label || {} : undefined}
+        {...rest}
+      />
+    </div>
   );
 };
 

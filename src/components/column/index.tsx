@@ -35,16 +35,18 @@ const Column: React.FC<ColumnProps> = ({
   const data = useData(dataSource);
 
   return (
-    <AntVColumn
-      data={data}
-      xField={xField}
-      yField={yField}
-      legend={showLegend ? legend : false}
-      label={showLabel ? label || {} : undefined}
-      xAxis={getAxis(xAxis, xAxisExtra)}
-      yAxis={getAxis(yAxis, yAxisExtra)}
-      {...rest}
-    />
+    <div>
+      <AntVColumn
+        data={data}
+        xField={xField}
+        yField={yField}
+        legend={showLegend ? legend : false}
+        label={showLabel ? label || {} : undefined}
+        xAxis={getAxis(xAxis, xAxisExtra)}
+        yAxis={getAxis(yAxis, yAxisExtra)}
+        {...rest}
+      />
+    </div>
   );
 };
 

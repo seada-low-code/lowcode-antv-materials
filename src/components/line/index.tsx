@@ -43,19 +43,21 @@ const Line: React.FC<LineProps> = ({
   const data = useData(dataSource);
 
   return (
-    <AntVLine
-      data={data}
-      xField={xField}
-      yField={yField}
-      legend={showLegend ? legend : false}
-      label={showLabel ? label || {} : undefined}
-      point={showPoint ? point : undefined}
-      xAxis={getAxis(xAxis, xAxisExtra)}
-      yAxis={getAxis(yAxis, yAxisExtra)}
-      {...rest}
-      smooth={displayType === 'curve'}
-      stepType={displayType === 'step' ? stepType || 'hv' : null}
-    />
+    <div>
+      <AntVLine
+        data={data}
+        xField={xField}
+        yField={yField}
+        legend={showLegend ? legend : false}
+        label={showLabel ? label || {} : undefined}
+        point={showPoint ? point : undefined}
+        xAxis={getAxis(xAxis, xAxisExtra)}
+        yAxis={getAxis(yAxis, yAxisExtra)}
+        {...rest}
+        smooth={displayType === 'curve'}
+        stepType={displayType === 'step' ? stepType || 'hv' : null}
+      />
+    </div>
   );
 };
 

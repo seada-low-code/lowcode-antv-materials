@@ -36,16 +36,18 @@ const Bar: React.FC<BarProps> = ({
   const data = useData(dataSource);
 
   return (
-    <AntVBar
-      data={data}
-      xField={xField}
-      yField={yField}
-      legend={showLegend ? legend : false}
-      label={showLabel ? label || {} : undefined}
-      xAxis={getAxis(xAxis, xAxisExtra)}
-      yAxis={getAxis(yAxis, yAxisExtra)}
-      {...rest}
-    />
+    <div>
+      <AntVBar
+        data={data}
+        xField={xField}
+        yField={yField}
+        legend={showLegend ? legend : false}
+        label={showLabel ? label || {} : undefined}
+        xAxis={getAxis(xAxis, xAxisExtra)}
+        yAxis={getAxis(yAxis, yAxisExtra)}
+        {...rest}
+      />
+    </div>
   );
 };
 
