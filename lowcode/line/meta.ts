@@ -1,13 +1,6 @@
 import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
 import { snippets } from './snippets';
-import {
-  axisMeta,
-  containerMeta,
-  dataSourceMeta,
-  getAxisMetaData,
-  labelMeta,
-  legendMeta,
-} from '../common';
+import { axisMeta, containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 
 const LineMeta: IPublicTypeComponentMetadata = {
   componentName: 'Line',
@@ -154,19 +147,6 @@ const LineMeta: IPublicTypeComponentMetadata = {
               componentName: 'BoolSetter',
             },
           },
-        ],
-      },
-      { ...containerMeta },
-      { ...axisMeta },
-      { ...labelMeta },
-      { ...legendMeta },
-      {
-        title: {
-          label: '图形',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [
           {
             name: 'showPoint',
             title: {
@@ -213,6 +193,10 @@ const LineMeta: IPublicTypeComponentMetadata = {
           },
         ],
       },
+      { ...containerMeta },
+      { ...axisMeta },
+      { ...labelMeta },
+      { ...legendMeta },
     ],
     supports: {
       style: true,

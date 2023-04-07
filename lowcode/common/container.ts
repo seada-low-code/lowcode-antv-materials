@@ -48,12 +48,9 @@ export const containerMeta: IPublicTypeFieldConfig = {
         label: '间距',
         tip: '间距|padding',
       },
-      setter: [
-        {
-          componentName: 'NumberSetter',
-        },
-      ],
-      defaultValue: 'auto',
+      setter: {
+        componentName: 'PaddingSetter',
+      },
     },
     // {
     //   name: 'appendPadding',
