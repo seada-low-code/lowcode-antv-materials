@@ -1,6 +1,6 @@
 {
   "name": "@seada/antv-materials",
-  "version": "0.1.0",
+  "version": "0.1.5-beta.0",
   "description": "lowcode-antv-materials",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -19,15 +19,15 @@
     "lowcode:build": "build-scripts build --config ./build.lowcode.js",
     "f2elint-scan": "f2elint scan",
     "f2elint-fix": "f2elint fix",
-    "prepublishOnly": "npm run build && npm run lowcode:build"
+    "prepublishOnly": "npm run lowcode:build"
   },
   "directories": {
     "test": "test"
   },
   "keywords": [
-    "Fusion"
+    "Seada"
   ],
-  "author": "fusion-team",
+  "author": "Seada",
   "license": "MIT",
   "husky": {
     "hooks": {
@@ -78,6 +78,9 @@
   },
   "componentConfig": {
     "isComponentLibrary": true,
-    "materialSchema": "https://unpkg.com/@seada/antv-materials@0.1.0/build/lowcode/assets-prod.json"
+    "materialSchema": "https://unpkg.com/@seada/antv-materials@0.1.5-beta.0/build/lowcode/assets-daily.json"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

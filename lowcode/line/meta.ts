@@ -1,101 +1,6 @@
-import {
-  IPublicTypeComponentMetadata,
-  IPublicTypeFieldConfig,
-  IPublicTypeSnippet,
-} from '@alilc/lowcode-types';
-import { containerMeta, dataSourceMeta } from '../common';
-
-const getAxisMetaData = (axisName: string): IPublicTypeFieldConfig => {
-  return {
-    title: {
-      label: axisName,
-    },
-    display: 'accordion',
-    type: 'group',
-    items: [
-      {
-        name: `${axisName}.top`,
-        title: {
-          label: 'top',
-          tip: '是否渲染在画布顶层',
-        },
-        setter: {
-          componentName: 'BoolSetter',
-        },
-      },
-      {
-        name: `${axisName}.position`,
-        title: {
-          label: 'position',
-          tip: '坐标轴的位置',
-        },
-        setter: {
-          componentName: 'RadioGroupSetter',
-          props: {
-            options: [
-              {
-                label: 'top',
-                value: 'top',
-              },
-              {
-                label: 'bottom',
-                value: 'bottom',
-              },
-              {
-                label: 'left',
-                value: 'left',
-              },
-              {
-                label: 'right',
-                value: 'right',
-              },
-            ],
-          },
-        },
-      },
-      {
-        name: `${axisName}.min`,
-        title: {
-          label: 'min',
-          tip: '坐标轴最小值',
-        },
-        setter: {
-          componentName: 'NumberSetter',
-          props: {
-            min: 0,
-          },
-          initialValue: 0,
-        },
-      },
-      {
-        name: `${axisName}.max`,
-        title: {
-          label: 'max',
-          tip: '坐标轴最大值',
-        },
-        setter: {
-          componentName: 'NumberSetter',
-          props: {
-            min: 0,
-          },
-        },
-      },
-      {
-        name: `${axisName}.tickCount`,
-        title: {
-          label: 'tickCount',
-          tip: '期望的坐标轴刻度数量',
-        },
-        setter: {
-          componentName: 'NumberSetter',
-          props: {
-            min: 0,
-          },
-        },
-      },
-    ],
-  };
-};
+import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
+import { snippets } from './snippets';
+import { axisMeta, containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
 
 const LineMeta: IPublicTypeComponentMetadata = {
   componentName: 'Line',
@@ -242,122 +147,63 @@ const LineMeta: IPublicTypeComponentMetadata = {
               componentName: 'BoolSetter',
             },
           },
+          {
+            name: 'showPoint',
+            title: {
+              label: '标记开关',
+            },
+            setter: {
+              componentName: 'BoolSetter',
+            },
+          },
+          {
+            name: 'point.shape',
+            title: {
+              label: '标记形状',
+            },
+            setter: {
+              componentName: 'SelectSetter',
+              props: {
+                options: [
+                  {
+                    label: '圆形',
+                    value: 'circle',
+                  },
+                  {
+                    label: '菱形',
+                    value: 'diamond',
+                  },
+                  {
+                    label: '方形',
+                    value: 'square',
+                  },
+                  {
+                    label: '三角形',
+                    value: 'triangle',
+                  },
+                  {
+                    label: '向下三角形',
+                    value: 'triangle-down',
+                  },
+                ],
+              },
+              initialValue: 'circle',
+            },
+            condition: (target) => target.getProps().getPropValue('showPoint') === true,
+          },
         ],
       },
       { ...containerMeta },
-      {
-        title: {
-          label: '图表组件',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [{ ...getAxisMetaData('xAxis') }, { ...getAxisMetaData('yAxis') }],
-      },
+      { ...axisMeta },
+      { ...labelMeta },
+      { ...legendMeta },
     ],
-    supports: {},
+    supports: {
+      style: true,
+    },
     component: {},
   },
 };
-const snippets: IPublicTypeSnippet[] = [
-  {
-    title: '基础折线图',
-    screenshot:
-      'https://gw.alipayobjects.com/zos/antfincdn/aiERL4ey%24U/08d95f7b-46cb-4bfd-89b2-be36343d44a1.png',
-    schema: {
-      componentName: 'Line',
-      props: {
-        dataSource: {
-          type: 'api',
-          config: {
-            url: 'https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json',
-          },
-        },
-        xField: 'Date',
-        yField: 'scales',
-        padding: 'auto',
-      },
-    },
-  },
-  {
-    title: '阶梯折线图',
-    screenshot:
-      'https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*lOdVRrYL7UIAAAAAAAAAAAAAARQnAQ',
-    schema: {
-      componentName: 'Line',
-      props: {
-        dataSource: {
-          type: 'static',
-          config: {
-            list: [
-              {
-                year: '1991',
-                value: 3,
-              },
-              {
-                year: '1992',
-                value: 4,
-              },
-              {
-                year: '1993',
-                value: 3.5,
-              },
-              {
-                year: '1994',
-                value: 5,
-              },
-              {
-                year: '1995',
-                value: 4.9,
-              },
-              {
-                year: '1996',
-                value: 6,
-              },
-              {
-                year: '1997',
-                value: 7,
-              },
-              {
-                year: '1998',
-                value: 9,
-              },
-              {
-                year: '1999',
-                value: 13,
-              },
-              {
-                year: '1999',
-                value: 8,
-              },
-            ],
-          },
-        },
-        xField: 'year',
-        yField: 'value',
-        stepType: 'vh',
-      },
-    },
-  },
-  {
-    title: '多折线图',
-    screenshot:
-      'https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*IZ9nRq-a6fIAAAAAAAAAAABkARQnAQ',
-    schema: {
-      componentName: 'Line',
-      props: {
-        dataSource: {
-          type: 'api',
-          config: {
-            url: 'https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json',
-          },
-        },
-        xField: 'year',
-        yField: 'value',
-        seriesField: 'category',
-      },
-    },
-  },
-];
 
 export default {
   ...LineMeta,

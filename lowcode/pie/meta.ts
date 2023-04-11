@@ -1,5 +1,6 @@
-import { IPublicTypeComponentMetadata, IPublicTypeSnippet } from '@alilc/lowcode-types';
-import { containerMeta, dataSourceMeta } from '../common';
+import { IPublicTypeComponentMetadata } from '@alilc/lowcode-types';
+import { containerMeta, dataSourceMeta, labelMeta, legendMeta } from '../common';
+import { snippets } from './snippets';
 
 const PieMeta: IPublicTypeComponentMetadata = {
   componentName: 'Pie',
@@ -44,6 +45,8 @@ const PieMeta: IPublicTypeComponentMetadata = {
         ],
       },
       { ...containerMeta },
+      { ...labelMeta },
+      { ...legendMeta },
       {
         title: {
           label: '图形样式',
@@ -103,194 +106,13 @@ const PieMeta: IPublicTypeComponentMetadata = {
           },
         ],
       },
-      {
-        title: {
-          label: '图表组件',
-        },
-        display: 'accordion',
-        type: 'group',
-        items: [
-          {
-            title: {
-              label: '文本标签',
-            },
-            display: 'popup',
-            type: 'group',
-            items: [
-              {
-                name: 'label.type',
-                title: {
-                  label: 'type',
-                },
-                setter: {
-                  componentName: 'RadioGroupSetter',
-                  props: {
-                    options: [
-                      {
-                        label: 'inner',
-                        value: 'inner',
-                      },
-                      {
-                        label: 'outer',
-                        value: 'outer',
-                      },
-                      {
-                        label: 'spider',
-                        value: 'spider',
-                      },
-                    ],
-                    defaultValue: 'inner',
-                  },
-                },
-              },
-              {
-                name: 'label.content',
-                title: {
-                  label: 'content',
-                },
-                setter: {
-                  componentName: 'StringSetter',
-                },
-              },
-              {
-                name: 'label.rotate',
-                title: {
-                  label: 'rotate',
-                  tip: '文本旋转角度',
-                },
-                setter: {
-                  componentName: 'NumberSetter',
-                },
-              },
-            ],
-          },
-        ],
-      },
     ],
-    supports: {},
+    supports: {
+      style: true,
+    },
     component: {},
   },
 };
-
-const snippets: IPublicTypeSnippet[] = [
-  {
-    title: '饼图',
-    screenshot:
-      'https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*wmldRZZj9lIAAAAAAAAAAABkARQnAQ',
-    schema: {
-      componentName: 'Pie',
-      props: {
-        dataSource: {
-          type: 'static',
-          config: {
-            list: [
-              {
-                type: '分类一',
-                value: 27,
-              },
-              {
-                type: '分类二',
-                value: 25,
-              },
-              {
-                type: '分类三',
-                value: 18,
-              },
-              {
-                type: '分类四',
-                value: 15,
-              },
-              {
-                type: '分类五',
-                value: 10,
-              },
-              {
-                type: '其他',
-                value: 5,
-              },
-            ],
-          },
-        },
-        colorField: 'type',
-        angleField: 'value',
-      },
-    },
-  },
-  {
-    title: '环图',
-    screenshot:
-      'https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*65WIQK5T4c8AAAAAAAAAAAAAARQnAQ',
-    schema: {
-      componentName: 'Pie',
-      props: {
-        dataSource: {
-          type: 'static',
-          config: {
-            list: [
-              {
-                type: '分类一',
-                value: 27,
-              },
-              {
-                type: '分类二',
-                value: 25,
-              },
-              {
-                type: '分类三',
-                value: 18,
-              },
-              {
-                type: '分类四',
-                value: 15,
-              },
-              {
-                type: '分类五',
-                value: 10,
-              },
-              {
-                type: '其他',
-                value: 5,
-              },
-            ],
-          },
-        },
-        appendPadding: 10,
-        angleField: 'value',
-        colorField: 'type',
-        radius: 1,
-        innerRadius: 0.5,
-        label: {
-          type: 'inner',
-          offset: '-50%',
-          content: '{value}',
-          style: {
-            textAlign: 'center',
-            fontSize: 14,
-          },
-        },
-        interactions: [
-          {
-            type: 'element-selected',
-          },
-          {
-            type: 'element-active',
-          },
-        ],
-        statistic: {
-          title: false,
-          content: {
-            style: {
-              whiteSpace: 'pre-wrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            },
-            content: 'AntV\nG2Plot',
-          },
-        },
-      },
-    },
-  },
-];
 
 export default {
   ...PieMeta,

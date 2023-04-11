@@ -15,3 +15,8 @@ export interface IDataSource {
   type: 'static' | 'api';
   config: Config;
 }
+
+export interface AxisExtra {
+  showAxis?: boolean;
+  showTitle?: boolean;
+}
