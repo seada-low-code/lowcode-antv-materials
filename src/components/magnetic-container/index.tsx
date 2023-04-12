@@ -65,45 +65,34 @@ const MagneticContainer: React.FC<MagneticContainerProps> = ({
     _leaf.parent.isRGLContainer = true;
   }
 
-  // useEffect(() => {
-  //   // 当children改变的时候，同时需要更改layout
-  //   if (!Array.isArray(children)) return;
-  //   const childrenLen = children.length;
-  //   if (lastChildrenLen.current > children.length) {
-  //     console.log('删除了节点');
-  //     // 删除了节点
-  //     lastChildrenLen.current = childrenLen;
-  //     // 找到节点对应的layout并删除掉
-  //   } else if (lastChildrenLen.current < children.length) {
-  //     console.log('增加了节点');
-  //     const child = children[children.length - 1];
-  //     // 增加了节点
-  //     lastChildrenLen.current = childrenLen;
-  //     // 添加layout
-  //     layoutRef.current.push({
-  //       i: child.key, // id
-  //       x: 0,
-  //       y: children.length,
-  //       w: 12,
-  //       h: 4,
-  //     });
-  //   }
-  // }, [children]);
+  useEffect(() => {
+    // 当children改变的时候，同时需要更改layout
+    if (!Array.isArray(children)) return;
+    const childrenLen = children.length;
+    if (lastChildrenLen.current > children.length) {
+      console.log('删除了节点');
+      // 删除了节点
+      lastChildrenLen.current = childrenLen;
+      // 找到节点对应的layout并删除掉
+    } else if (lastChildrenLen.current < children.length) {
+      console.log('增加了节点');
+      const child = children[children.length - 1];
+      // 增加了节点
+      lastChildrenLen.current = childrenLen;
+      // 添加layout
+      layoutRef.current.push({
+        i: child.key || 'placeholder', // id
+        x: 0,
+        y: children.length,
+        w: 12,
+        h: 4,
+      });
+    }
+  }, [children]);
 
-  if (Array.isArray(children) && layout.length < children.length) {
-    // 设置新增加的children的layout属性
-    const child = children[children.length - 1];
-    layout.push({
-      i: child.key, // id
-      x: 0,
-      y: children.length,
-      w: 12,
-      h: 4,
-    });
-  }
   return (
     <div style={{ height: '100vh' }}>
-      <RGLContainer layout={layout}>{children}</RGLContainer>
+      <RGLContainer layout={layoutRef.current}>{children}</RGLContainer>
     </div>
   );
 };

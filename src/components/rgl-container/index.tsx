@@ -53,9 +53,16 @@ const RGLContainer: React.FC<RGLContainerProps> = ({ layout, children, _leaf }) 
   const renderChildren = () => {
     if (Array.isArray(children) && children.length > 0) {
       return children.map((child, index) => {
-        console.log(child, index, layout);
         const { key } = child;
-        return <div key={key}>{child}</div>;
+        const item = layout[index];
+        return (
+          <div
+            key={key}
+            data-grid={{ w: item?.w || 12, h: item?.h || 4, x: item?.x || 0, y: item?.y || 0 }}
+          >
+            {child}
+          </div>
+        );
       });
     }
     return null;
