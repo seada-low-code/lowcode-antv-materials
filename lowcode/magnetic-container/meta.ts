@@ -22,6 +22,9 @@ const MagneticContainerMeta: IPublicTypeComponentMetadata = {
     component: {
       isContainer: true,
     },
+    advanced: {
+      isAbsoluteLayoutContainer: true,
+    },
   },
 };
 

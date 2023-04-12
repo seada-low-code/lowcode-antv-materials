@@ -1,9 +1,10 @@
 import React from 'react';
-import { WidthProvider, Responsive } from 'react-grid-layout';
+import GridLayout, { WidthProvider } from 'react-grid-layout';
 import './index.scss';
+import { IPublicModelNode } from '@alilc/lowcode-types';
 
 // 响应式网格布局
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+const MyGridLayout = WidthProvider(GridLayout);
 
 // export class RGLContainer extends React.Component {
 //   onGridLayoutChange(layout) {
@@ -41,32 +42,34 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 export interface RGLContainerProps {
   layout: ReactGridLayout.Layout[];
   children?: React.ReactNode;
+  _leaf?: IPublicModelNode;
+  __designMode?: 'design' | 'preview';
 }
 
-const RGLContainer: React.FC<RGLContainerProps> = ({ layout, children }) => {
-  // const layout = [
-  //   { i: 'blue-eyes-dragon', x: 0, y: 0, w: 1, h: 1 },
-  //   { i: 'dark-magician', x: 1, y: 0, w: 1, h: 1 },
-  //   { i: 'kuriboh', x: 2, y: 0, w: 1, h: 1 },
-  //   { i: 'spell-caster', x: 3, y: 0, w: 1, h: 1 },
-  //   { i: 'summoned-skull', x: 4, y: 0, w: 1, h: 1 },
-  // ];
+/**
+ * 将组件拖拽到这个容器里面
+ */
+const RGLContainer: React.FC<RGLContainerProps> = ({ layout, children, _leaf }) => {
   const renderChildren = () => {
-    // 如果是一个数组
     if (Array.isArray(children) && children.length > 0) {
-      const childNodes = [];
-      children.forEach((item, index) => {});
+      return children.map((child, index) => {
+        console.log(child, index, layout);
+        const { key } = child;
+        return <div key={key}>{child}</div>;
+      });
     }
-    return children;
+    return null;
   };
+
+  const handleLayoutChange = (layoutData) => {
+    // 布局改变了，需要反映到magnetic-container的属性变化
+    console.log('布局改变了:', layoutData);
+  };
+
   return (
-    <ResponsiveReactGridLayout
-      layouts={{ lg: layout }}
-      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-      cols={{ lg: 5, md: 4, sm: 3, xs: 2, xxs: 1 }}
-    >
+    <MyGridLayout layout={layout} cols={12} rowHeight={100} onLayoutChange={handleLayoutChange}>
       {renderChildren()}
-    </ResponsiveReactGridLayout>
+    </MyGridLayout>
   );
 };
 
