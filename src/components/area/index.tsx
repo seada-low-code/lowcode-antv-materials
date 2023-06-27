@@ -4,7 +4,7 @@ import { useData } from '@/hooks/data';
 import { AxisExtra, IDataSource } from '@/types';
 import { getAxis } from '@/utils';
 
-export interface BarProps {
+export interface AreaProps {
   dataSource: IDataSource;
   xField: AreaConfig['xField'];
   yField: AreaConfig['yField'];
@@ -19,7 +19,7 @@ export interface BarProps {
   yAxis?: AreaConfig['yAxis'];
 }
 
-const Area: React.FC<BarProps> = ({
+const Area: React.FC<AreaProps> = ({
   xField,
   yField,
   dataSource,

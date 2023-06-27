@@ -10,6 +10,9 @@ export { default as Pie } from './components/pie';
 export type { BarProps } from './components/bar';
 export { default as Bar } from './components/bar';
 
+export type { AreaProps } from './components/area';
+export { default as Area } from './components/area';
+
 const bizCssPrefix = 'bizpack';
 
 export { bizCssPrefix };

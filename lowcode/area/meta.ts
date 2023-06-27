@@ -3,17 +3,17 @@ import { axisMeta, containerMeta, dataSourceMeta, labelMeta, legendMeta } from '
 import { snippets } from './snippets';
 
 const AreaMeta: IPublicTypeComponentMetadata = {
-  componentName: 'Bar',
-  title: 'Bar',
+  componentName: 'Area',
+  title: 'Area',
   docUrl: '',
   screenshot: '',
   devMode: 'proCode',
   group: 'AntV',
-  category: '条形图',
+  category: '面积图',
   npm: {
     package: '@seada/antv-materials',
     version: '0.1.0',
-    exportName: 'Bar',
+    exportName: 'Area',
     main: '',
     destructuring: true,
     subName: '',
