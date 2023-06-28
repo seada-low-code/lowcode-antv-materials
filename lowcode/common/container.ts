@@ -42,16 +42,16 @@ export const containerMeta: IPublicTypeFieldConfig = {
       },
       condition: (target) => target.getProps().getPropValue('autoFit') === false,
     },
-    {
-      name: 'padding',
-      title: {
-        label: '间距',
-        tip: '间距|padding',
-      },
-      setter: {
-        componentName: 'PaddingSetter',
-      },
-    },
+    // {
+    //   name: 'padding',
+    //   title: {
+    //     label: '间距',
+    //     tip: '间距|padding',
+    //   },
+    //   setter: {
+    //     componentName: 'PaddingSetter',
+    //   },
+    // },
     // {
     //   name: 'appendPadding',
     //   title: {
