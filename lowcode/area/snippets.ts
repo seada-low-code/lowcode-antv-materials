@@ -277,4 +277,30 @@ export const snippets: IPublicTypeSnippet[] = [
       },
     },
   },
+  {
+    title: '带缩略轴堆叠面积图',
+    screenshot:
+      'https://gw.alipayobjects.com/mdn/rms_d314dd/afts/img/A*LGuMQ4uO_0EAAAAAAAAAAAAAARQnAQ',
+    schema: {
+      componentName: 'Area',
+      props: {
+        dataSource: {
+          type: 'api',
+          config: {
+            url: 'https://gw.alipayobjects.com/os/bmw-prod/b21e7336-0b3e-486c-9070-612ede49284e.json',
+          },
+        },
+        xField: 'date',
+        yField: 'value',
+        seriesField: 'country',
+        slider: {
+          start: 0.1,
+          end: 0.9,
+        },
+        style: {
+          ...commonPadding,
+        },
+      },
+    },
+  },
 ];
